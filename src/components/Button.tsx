@@ -15,7 +15,7 @@ const Button = ({ className, children, handleClick }: ClassNameProps) => {
 					handleClick(e.currentTarget.textContent);
 				}
 			}}
-			className={`flex text-xl font-bold justify-center items-center w-full h-[50px] rounded-lg transition-all hover:bg-light-theme-ac ${className}`}
+			className={`flex text-xl font-bold justify-center items-center w-[60px] h-[60px] rounded-[16px] transition-all hover:bg-light-theme-ac ${className}`}
 		>
 			{children}
 		</button>

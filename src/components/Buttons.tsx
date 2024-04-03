@@ -1,3 +1,6 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+import { useContext } from "react";
+import { ThemeContext } from "./App";
 import Button from "./Button";
 
 interface Props {
@@ -19,6 +22,20 @@ const Buttons = ({
 	isOperationNext,
 	setIsOperationNext,
 }: Props) => {
+	const darkTheme = useContext(ThemeContext);
+
+	const lightDigit =
+		"bg-white hover:shadow-lg hover:shadow-light-blue text-light-blue";
+	const lightOperation =
+		"bg-light-operation hover:shadow-lg hover:shadow-gray text-light-operation-blue";
+	const darkDigit =
+		"bg-dark-digit hover:shadow-lg hover:shadow-dark-digit-blue text-dark-digit-blue";
+	const darkOperation =
+		"bg-dark-operation hover:shadow-lg hover:shadow-white text-dark-operation-blue";
+
+	const digitTheme = darkTheme ? darkDigit : lightDigit;
+	const operationTheme = darkTheme ? darkOperation : lightOperation;
+
 	const signsArray: string[] = [
 		"CE",
 		"±",
@@ -83,8 +100,15 @@ const Buttons = ({
 				key={i}
 				className={`${
 					sign === "0"
-						? "text-white bg-light-theme-digit col-span-2"
-						: "text-white bg-light-theme-digit"
+						? digitTheme + " col-span-2 w-full"
+						: sign === "×" ||
+						  sign === "+" ||
+						  sign === "-" ||
+						  sign === "÷" ||
+						  sign === "=" ||
+						  sign === "%"
+						? operationTheme
+						: digitTheme
 				}`}
 				handleClick={conditionalHandleCLick}
 			>
